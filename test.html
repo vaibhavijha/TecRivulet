@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ABCD</title>
+</head>
+<body>
+    <p>
+      name
+    </p>
+    <input required type="text" id="fname" name="fname"><br><br>
+    <p>
+      number
+    </p>
+    <input required type="text" id="number" name="number"><br>
+    <br>
+    <button id="btn" type="submit">Submit</button>
+</body>
+<script>
+  const btn = document.getElementById("btn");
+  const fname = document.getElementById("fname");
+  const number = document.getElementById("number");
+  btn.addEventListener("click", function(){
+    console.log(fname.value);
+    console.log(number.value);
+    const n = fname.value;
+    const p = number.value;
+
+    const url = `https://contecrivulet1591956068.zendesk.com/api/v2/users/search.json?query=role:end-user%20phone:${p}`;
+
+    fetch(url,{
+      mode:"no-cors",
+    })
+      .then((response)=>{
+        return response.json();
+      }).then((data)=>{
+        console.log(data);
+      })
+      .catch(err => console.error(err));
+  // console.log("hello");
+})
+</script>
+</html>
